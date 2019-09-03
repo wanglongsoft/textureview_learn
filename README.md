@@ -142,3 +142,7 @@ private CameraCaptureSession.StateCallback m_cameraCaptureStateCallback = new Ca
 + 必须开启硬件加速（这个默认就是开启的）
 + 可以像常规视图（View）那样使用它，包括进行平移、缩放等操作
 + 实现SurfaceTextureListener接口，监控SurfaceTexture 的各种状态
++ 调用TextureView的draw方法时，如果还没有初始化SurfaceTexture,那么就会初始化它,初始化好时，就会回调onSurfaceTextureAvailable,表示可以接收外界的绘制指令了,然后SurfaceTexture会以GL纹理信息更新到TextureView对应的HardwareLayer中
++ 接收外界的绘制指令的方式通常有两种，Surface提供dequeueBuffer/queueBuffer等硬件渲染接口和lockCanvas/unlockCanvasAndPost等软件渲染接口，使内容流的源可以往BufferQueue中填graphic buffer
++ 接收视频流的对象是SurfaceTexture，本质上是Surface，而不是textureView，textureView只是作为一个硬件加速层来展示
++ textureView的接口setSurfaceTexture可以设置SurfaceTexture,达到复用的目的
