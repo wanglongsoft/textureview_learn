@@ -146,3 +146,5 @@ private CameraCaptureSession.StateCallback m_cameraCaptureStateCallback = new Ca
 + 接收外界的绘制指令的方式通常有两种，Surface提供dequeueBuffer/queueBuffer等硬件渲染接口和lockCanvas/unlockCanvasAndPost等软件渲染接口，使内容流的源可以往BufferQueue中填graphic buffer
 + 接收视频流的对象是SurfaceTexture，本质上是Surface，而不是textureView，textureView只是作为一个硬件加速层来展示
 + textureView的接口setSurfaceTexture可以设置SurfaceTexture,达到复用的目的
+##### Camera知识点
+[Camera实践指南](https://www.androidos.net.cn/doc/day/2018-02-18/15363.md)
